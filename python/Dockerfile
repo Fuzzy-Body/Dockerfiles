@@ -14,7 +14,7 @@ ENV APP_DIR /usr/opt/app
 # 依赖的文件名称
 ENV REQ_FILE req.txt
 
-mkdir -p $APP_DIR
+RUN mkdir -p $APP_DIR
 VOLUME $APP_DIR
 WORKDIR $APP_DIR
 
