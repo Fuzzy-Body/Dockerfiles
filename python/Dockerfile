@@ -10,9 +10,9 @@ ADD sources.list /etc/apt/
 RUN apt-get -yqq update
 
 # 文件目录
-ENV APP_DIR /usr/opt/app
+ARG APP_DIR=/usr/opt/app
 # 依赖的文件名称
-ENV REQ_FILE req.txt
+ARG REQ_FILE=req.txt
 
 RUN mkdir -p $APP_DIR
 VOLUME $APP_DIR
