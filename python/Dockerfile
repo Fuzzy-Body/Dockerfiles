@@ -10,12 +10,15 @@ ADD sources.list /etc/apt/
 RUN apt-get -yqq update
 
 # 文件目录
-ENV APP_DIR ../
+ENV APP_DIR /usr/opt/app
 # 依赖的文件名称
 ENV REQ_FILE req.txt
 
+mkdir -p $APP_DIR
 VOLUME $APP_DIR
 WORKDIR $APP_DIR
 
 ONBUILD RUN pip install --no-cache-dir -r $REQ_FILE  -i https://mirrors.ustc.edu.cn/pypi/web/simple --trusted-host=mirrors.ustc.edu.cn
+
+EXPOSE 5000
 CMD ["./runserver.sh"]
