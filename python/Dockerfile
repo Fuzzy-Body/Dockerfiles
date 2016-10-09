@@ -2,7 +2,7 @@ FROM python:2.7.12
 MAINTAINER Bruce
 ENV REFRESHED_AT 2016-10-09
 
-# ubuntu
+# ubuntu 16.*
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
@@ -13,9 +13,9 @@ RUN apt-get -yqq update
 ARG APP_DIR=/usr/opt/app
 # 依赖的文件名称
 ARG REQ_FILE=req.txt
+ADD $REQ_FILE $APP_DIR
 
 RUN mkdir -p $APP_DIR
-VOLUME $APP_DIR
 WORKDIR $APP_DIR
 
 ONBUILD RUN pip install --no-cache-dir -r $REQ_FILE  -i https://mirrors.ustc.edu.cn/pypi/web/simple --trusted-host=mirrors.ustc.edu.cn
