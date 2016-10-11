@@ -10,7 +10,7 @@
 
 ### python容器使用
 
-最好把Dockerfile拷贝到项目目录下，假设requirements.txt在根目录下，构建镜像
+最好把Dockerfile拷贝到项目目录下，假设requirements.txt在根目录下，构建镜像
 
         docker build --no-cache --build-arg requirement=requirement.txt -t "fuzzy-body/python" .
 
